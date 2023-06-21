@@ -2,7 +2,6 @@
 # 环境变量
 export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Shanghai
-export HUB_DOMAIN=github.com
 # 基础包
 sudo apt update && sudo apt install -y --fix-missing python3 python3-pip python3-dev lib32z1 \
 xinetd curl gcc gdb gdbserver g++ git libssl-dev libffi-dev build-essential tmux \
@@ -20,24 +19,23 @@ sudo gem install one_gadget seccomp-tools
 python3 -m pip install --upgrade pip && \
 pip3 install ropper capstone unicorn keystone-engine z3-solver qiling lief libnum pycryptodome angr trash-cli && \
 cd $HOME/pwn_env 
-export HUB_DOMAIN=github.com
-git clone https://${HUB_DOMAIN}/pwndbg/pwndbg && \
+git clone https://github.com/pwndbg/pwndbg && \
 cd ./pwndbg && \
 ./setup.sh && \
 cd $HOME/pwn_env && \
-git clone https://${HUB_DOMAIN}/hugsy/gef.git && \
-git clone https://${HUB_DOMAIN}/longld/peda.git && \
-git clone https://${HUB_DOMAIN}/RoderickChan/Pwngdb.git && \
-git clone https://${HUB_DOMAIN}/Gallopsled/pwntools && \
+git clone https://github.com/hugsy/gef.git && \
+git clone https://github.com/longld/peda.git && \
+git clone https://github.com/RoderickChan/Pwngdb.git && \
+git clone https://github.com/Gallopsled/pwntools && \
 pip3 install --upgrade --editable ./pwntools && \
-git clone https://${HUB_DOMAIN}/RoderickChan/pwncli.git && \
+git clone https://github.com/RoderickChan/pwncli.git && \
 pip3 install --upgrade --editable ./pwncli && \
-git clone https://${HUB_DOMAIN}/marin-m/vmlinux-to-elf.git && \
-git clone https://${HUB_DOMAIN}/JonathanSalwan/ROPgadget.git && \
-python3 ./ROPgadget/setup.py install
+git clone https://github.com/marin-m/vmlinux-to-elf.git && \
+git clone https://github.com/JonathanSalwan/ROPgadget.git && \
+sudo python3 ./ROPgadget/setup.py install
 
 # 安装patchelf和r2
-git clone https://${HUB_DOMAIN}/NixOS/patchelf.git && \
+git clone https://github.com/NixOS/patchelf.git && \
 cd ./patchelf && \
 ./bootstrap.sh && \
 ./configure && \
@@ -45,7 +43,7 @@ make && \
 sudo make install && \
 cd $HOME/pwn_env && \
 export version=$(curl -s https://api.github.com/repos/radareorg/radare2/releases/latest | grep -P '"tag_name": "(.*)"' -o| awk '{print $2}' | awk -F"\"" '{print $2}') && \
-wget https://${HUB_DOMAIN}/radareorg/radare2/releases/download/${version}/radare2_${version}_amd64.deb && \
+wget https://github.com/radareorg/radare2/releases/download/${version}/radare2_${version}_amd64.deb && \
 sudo dpkg -i radare2_${version}_amd64.deb && rm radare2_${version}_amd64.deb
 
 
@@ -96,9 +94,9 @@ sudo make install
 # 安装zsh
 export HUB_DOMAIN=github.com
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
-git clone https://${HUB_DOMAIN}/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions && \
-git clone https://${HUB_DOMAIN}/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting && \
-git clone https://${HUB_DOMAIN}/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions && \
+git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting && \
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 
 
 cat > ~/.zshrc << "EOF"
