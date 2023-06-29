@@ -17,7 +17,7 @@ sudo gem install one_gadget seccomp-tools
 
 # python包
 python3 -m pip install --upgrade pip && \
-pip3 install ropper capstone unicorn keystone-engine z3-solver qiling lief libnum pycryptodome angr trash-cli && \
+pip3 install ropper capstone unicorn keystone-engine z3-solver qiling lief libnum pycryptodome angr && \
 cd $HOME/pwn_env 
 git clone https://github.com/pwndbg/pwndbg && \
 cd ./pwndbg && \
@@ -27,7 +27,7 @@ git clone https://github.com/hugsy/gef.git && \
 git clone https://github.com/longld/peda.git && \
 git clone https://github.com/RoderickChan/Pwngdb.git && \
 git clone https://github.com/Gallopsled/pwntools && \
-pip3 install --upgrade --editable ./pwntools && \
+sudo pip3 install --upgrade --editable ./pwntools && \
 git clone https://github.com/RoderickChan/pwncli.git && \
 pip3 install --upgrade --editable ./pwncli && \
 git clone https://github.com/marin-m/vmlinux-to-elf.git && \
@@ -107,15 +107,15 @@ cat > ~/.zshrc << "EOF"
 if [ ! "$TMUX" = "" ]; then export TERM=xterm-256color; fi # auto-suggestion in tmux
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
-alias rm='echo "This is not the command you are looking for. Use trash-put instead.";false'
-alias trp=trash-put
-alias tre=trash-empty
-alias trl=trash-list
-alias trr=trash-restore
-alias trm=trash-rm
+# alias rm='echo "This is not the command you are looking for. Use trash-put instead.";false'
+# alias trp=trash-put
+# alias tre=trash-empty
+# alias trl=trash-list
+# alias trr=trash-restore
+# alias trm=trash-rm
 alias openaslr="sudo -u root sh -c 'echo 2 >/proc/sys/kernel/randomize_va_space'"
 alias closeaslr="sudo -u root sh -c 'echo 0 >/proc/sys/kernel/randomize_va_space'"
-alias cat=ccat
+# alias cat=ccat
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 # Set name of the theme to load --- if set to "random", it will
